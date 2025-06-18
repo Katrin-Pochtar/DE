@@ -52,6 +52,7 @@ python etl/save_results.py
 ```
 
 Artifacts (`model.pkl` and `metrics.json`) will appear in `results/final/`.
+The `results/` folder is created automatically when the pipeline runs, even though it is ignored by git.
 
 ## Integration
 
