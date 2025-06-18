@@ -1,6 +1,6 @@
 # ML Pipeline Demo
 
-This project demonstrates a simple machine learning pipeline orchestrated with **Apache Airflow**. The pipeline trains a logistic regression model on the Breast Cancer Wisconsin dataset and stores the resulting model and metrics in the `results/` directory.
+This project demonstrates a simple machine learning pipeline orchestrated with **Apache Airflow**. The pipeline trains a logistic regression model on the Breast Cancer Wisconsin dataset and stores the resulting model and metrics in the `results/final/` directory.
 
 ## Project Structure
 
@@ -17,10 +17,10 @@ This project demonstrates a simple machine learning pipeline orchestrated with *
 ## Pipeline Steps
 
 1. **Load Data** – fetch the dataset with `sklearn.datasets.load_breast_cancer` and save it as CSV.
-2. **Preprocess** – simple cleanup (column renaming to lowercase).
+2. **Preprocess** – cleanup (column normalization, duplicate removal, scaling).
 3. **Train Model** – train `LogisticRegression` and persist the model with `joblib`.
 4. **Evaluate** – calculate accuracy, precision, recall and F1; store metrics in JSON.
-5. **Save Results** – copy resulting artifacts to `results/` (placeholder for cloud upload).
+5. **Save Results** – copy resulting artifacts to `results/final/` (placeholder for cloud upload).
 
 A simplified flow is:
 
@@ -51,11 +51,11 @@ python etl/evaluate.py
 python etl/save_results.py
 ```
 
-Artifacts (`model.pkl` and `metrics.json`) will appear in `results/`.
+Artifacts (`model.pkl` and `metrics.json`) will appear in `results/final/`.
 
 ## Integration
 
-For demonstration, the integration step simply copies artifacts to `results/`. In a real environment this function can be extended to upload files to cloud storage (S3, Google Drive, etc.) using credentials stored outside the repository.
+For demonstration, the integration step simply copies artifacts to `results/final/`. In a real environment this function can be extended to upload files to cloud storage (S3, Google Drive, etc.) using credentials stored outside the repository.
 
 ## Error Handling & Robustness
 
