@@ -1,7 +1,9 @@
 from datetime import datetime
 from airflow import DAG
-from airflow.operators.python import PythonOperator
+from airflow.providers.standard.operators.python import PythonOperator
 import os
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config
 from etl import load_data, preprocess, train_model, evaluate, save_results
 
@@ -31,7 +33,7 @@ def _save_results():
 with DAG(
     dag_id='ml_pipeline',
     start_date=datetime(2023, 1, 1),
-    schedule_interval=None,
+    schedule=None,
     catchup=False
 ) as dag:
 
@@ -61,3 +63,4 @@ with DAG(
     )
 
     t1 >> t2 >> t3 >> t4 >> t5
+
