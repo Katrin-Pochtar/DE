@@ -2,3 +2,5 @@ pandas
 scikit-learn
 joblib
 apache-airflow
+requests
+beautifulsoup4
